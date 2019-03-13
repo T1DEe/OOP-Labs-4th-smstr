@@ -160,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 262);
+            this.ClientSize = new System.Drawing.Size(489, 262);
             this.Controls.Add(this.btnUploadSort);
             this.Controls.Add(this.btnPageSort);
             this.Controls.Add(this.btnYearSort);

@@ -13,30 +13,6 @@ namespace OOP_Lab02_3
         public MainForm()
         {
             InitializeComponent();
-            //InitializeCollection();
-        }
-
-        private void InitializeCollection()
-        {
-            try
-            {
-                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Library));
-
-                using (FileStream fs = new FileStream("library.json", FileMode.OpenOrCreate))
-                {
-                    library = (Library)jsonFormatter.ReadObject(fs);
-                }
-
-                foreach (BookFile book in library.GetBookCollection())
-                    listBox.Items.Add("Название: " + book.Name + " | " + "Автор: " + book.Author);
-                listBox.Update();
-
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("База данных пуста.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                library = new Library("Библиотека имени Рекардо Милоса.");
-            }
         }
 
         private void loadInFile_Click(object sender, EventArgs e)
@@ -72,7 +48,10 @@ namespace OOP_Lab02_3
                 List<BookFile> books = jsonLibrary.GetBookCollection();
 
                 foreach (BookFile book in books)
+                {
+                    library.GetBookCollection().Add(book);
                     listBox.Items.Add("Название: " + book.Name + " | " + "Автор: " + book.Author);
+                }
                 listBox.Update();
 
             }
