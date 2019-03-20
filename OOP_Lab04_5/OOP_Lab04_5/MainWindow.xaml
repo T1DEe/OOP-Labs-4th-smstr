@@ -5,25 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOP_Lab04_5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TextEditor" Height="450" Width="800"
+        MinWidth="410" MinHeight="300">
 
     <Grid Grid.Column="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="New"/>
+                <MenuItem Header="Open"/>
+                <MenuItem Header="Save"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+            </MenuItem>
+        </Menu>
+
+        <ToolBar Grid.Row="1" Background="LightBlue">
+            <Button Width="35" Height="35">
+                <Image Source="Resources/folder_open.png" Width="30" Height="30"/>
+            </Button>
+            <Button Width="35" Height="35">
+                <Image Source="Resources/save.png" Width="30" Height="30"/>
+            </Button>
+            <Separator Width="2" Background="DarkGray"/>
+            <Button Width="35" Height="35">
+                <Image Source="Resources/bold.png" Width="30" Height="30"/>
+            </Button>
+            <Button Width="35" Height="35">
+                <Image Source="Resources/italic.png" Width="30" Height="30"/>
+            </Button>
+            <Button Width="35" Height="35">
+                <Image Source="Resources/underline.png" Width="30" Height="30"/>
+            </Button>
+            <Separator Width="2" Background="DarkGray"/>
+            <ComboBox Name="fontsList" Width="120" Height="30">
+                <ComboBoxItem IsSelected="True">Arial</ComboBoxItem>
+                <ComboBoxItem>Calibri</ComboBoxItem>
+                <ComboBoxItem>Times New Roman</ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="sizeList" Width="50" Height="30">
+                <ComboBoxItem IsSelected="True" HorizontalAlignment="Center">12</ComboBoxItem>
+                <ComboBoxItem>16</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+            </ComboBox>
+        </ToolBar>
+
+        <TextBox Grid.Row="2" FontSize="30" Text="sggggsrgsefe"/>
         
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <StackPanel Background="LightBlue">
-            <TextBlock Text="Меню инстрементов" LineHeight="2" TextAlignment="Center" FontSize="15" />
-            <Button Content="ad" Margin="5"/>
-        </StackPanel>
-
-        <Grid Grid.Column="1">
-            <TextBox
-                FontSize="30"
-                Text="sggggsrgsefe"/>
-        </Grid>
-       
     </Grid>
 </Window>
