@@ -25,6 +25,7 @@ namespace OOP_Lab04_5
         {
             InitializeComponent();
             BindKeys();
+
         }
 
         private void BindKey(RoutedCommand command, Key key, ModifierKeys modifier, ExecutedRoutedEventHandler handler)
@@ -130,6 +131,24 @@ namespace OOP_Lab04_5
             {
                 MessageBox.Show(exc.Message);
             }
+        }
+
+        private void Theme_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem choose = (MenuItem)sender;
+
+            Uri uri;
+            if(choose.Header.ToString() == "Light")
+                uri = new Uri("/Themes/LightTheme.xaml", UriKind.Relative);
+            else
+                uri = new Uri("/Themes/DarkTheme.xaml", UriKind.Relative);
+
+            // загружаем словарь ресурсов
+            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+            // очищаем коллекцию ресурсов приложения
+            Application.Current.Resources.Clear();
+            // добавляем загруженный словарь ресурсов
+            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
         }
     }
 }

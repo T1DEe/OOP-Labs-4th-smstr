@@ -2,4 +2,40 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:OOP_Lab04_5">
     
+    <Style x:Key="Menu" TargetType="{x:Type Menu}">
+        <Style.Setters>
+            <Setter Property="Background" Value="DimGray"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="MenuItem" TargetType="{x:Type MenuItem}">
+        <Style.Setters>
+            <Setter Property="Background" Value="DimGray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="DimGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="Toolbar" TargetType="{x:Type ToolBar}">
+        <Style.Setters>
+            <Setter Property="Background" Value="DimGray"/>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="Menu_btn" TargetType="{x:Type Button}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Background" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="RichTextBox" TargetType="{x:Type RichTextBox}">
+        <Style.Setters>
+            <Setter Property="Background" Value="SlateGray"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style.Setters>
+    </Style>
 </ResourceDictionary>

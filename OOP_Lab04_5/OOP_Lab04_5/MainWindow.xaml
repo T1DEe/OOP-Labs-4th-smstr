@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OOP_Lab04_5"
         mc:Ignorable="d"
         Title="TextEditor" Height="450" Width="800"
-        MinWidth="410" MinHeight="300">
+        MinWidth="450" MinHeight="300">
 
     <Grid Grid.Column="0">
 
@@ -27,9 +27,9 @@
                 <MenuItem Header="Paste" Style="{DynamicResource MenuItem}"  Command="Paste"/>
             </MenuItem>
             <MenuItem Header="Settings">
-                <MenuItem Header="Theme"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
-                    <MenuItem Header="Light" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
-                    <MenuItem Header="Dark" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
+                <MenuItem x:Name="themeList" Header="Theme"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
+                    <MenuItem Header="Light" Style="{DynamicResource MenuItem}"  Click="Theme_Click"/>
+                    <MenuItem Header="Dark" Style="{DynamicResource MenuItem}"  Click="Theme_Click"/>
                 </MenuItem>
                 <MenuItem Header="Language"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
                     <MenuItem Header="English" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
