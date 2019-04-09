@@ -16,49 +16,63 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0">
+        <Menu Grid.Row="0" Style="{DynamicResource Menu}">
             <MenuItem Header="File">
-                <MenuItem Header="New"/>
-                <MenuItem Header="Open"/>
-                <MenuItem Header="Save"/>
+                <MenuItem Tag="new" Header="New" Style="{DynamicResource MenuItem}" Click="MenuItem_Click"/>
+                <MenuItem Tag="open" Header="Open" Style="{DynamicResource MenuItem}" Click="MenuItem_Click"/>
+                <MenuItem Tag="save" Header="Save" Style="{DynamicResource MenuItem}" Click="MenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Copy"/>
-                <MenuItem Header="Paste"/>
+                <MenuItem Header="Copy" Style="{DynamicResource MenuItem}"  Command="Copy"/>
+                <MenuItem Header="Paste" Style="{DynamicResource MenuItem}"  Command="Paste"/>
+            </MenuItem>
+            <MenuItem Header="Settings">
+                <MenuItem Header="Theme"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
+                    <MenuItem Header="Light" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
+                    <MenuItem Header="Dark" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
+                </MenuItem>
+                <MenuItem Header="Language"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
+                    <MenuItem Header="English" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
+                    <MenuItem Header="Russian" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
+                </MenuItem>
             </MenuItem>
         </Menu>
 
-        <ToolBar Grid.Row="1" Background="LightBlue">
-            <Button Width="35" Height="35">
-                <Image Source="Resources/folder_open.png" Width="30" Height="30"/>
+        <ToolBar Grid.Row="1" Style="{DynamicResource Toolbar}">
+            <Button Tag="open" Style="{StaticResource Menu_btn}" Click="MenuItem_Click">
+                <Image Source="Resources/icons/folder.png" Width="30" Height="30"/>
             </Button>
-            <Button Width="35" Height="35">
-                <Image Source="Resources/save.png" Width="30" Height="30"/>
-            </Button>
-            <Separator Width="2" Background="DarkGray"/>
-            <Button Width="35" Height="35">
-                <Image Source="Resources/bold.png" Width="30" Height="30"/>
-            </Button>
-            <Button Width="35" Height="35">
-                <Image Source="Resources/italic.png" Width="30" Height="30"/>
-            </Button>
-            <Button Width="35" Height="35">
-                <Image Source="Resources/underline.png" Width="30" Height="30"/>
+            <Button Tag="save" Style="{StaticResource Menu_btn}" Click="MenuItem_Click">
+                <Image Source="Resources/icons/save.png" Width="30" Height="30"/>
             </Button>
             <Separator Width="2" Background="DarkGray"/>
-            <ComboBox Name="fontsList" Width="120" Height="30">
+            <Button Tag="bold" Style="{StaticResource Menu_btn}" Click="btnBold_Click">
+                <Image Source="Resources/icons/bold.png" Width="30" Height="30"/>
+            </Button>
+            <Button Tag="italic" Style="{StaticResource Menu_btn}" Click="btnItalic_Click">
+                <Image Source="Resources/icons/italic.png" Width="30" Height="30"/>
+            </Button>
+            <Button Tag="underline" Style="{StaticResource Menu_btn}" Click="btnUnderline_Click">
+                <Image Source="Resources/icons/underline.png" Width="30" Height="30"/>
+            </Button>
+            <Separator Width="2" Background="DarkGray"/>
+            <Button Tag="lock" Style="{StaticResource Menu_btn}" Click="btnTextBoxLock_Click">
+                <Image Source="Resources/icons/lock.png" Width="30" Height="30"/>
+            </Button>
+            <Separator Width="2" Background="DarkGray"/>
+            <ComboBox x:Name="fontsList" Width="120" Height="30" SelectionChanged="FontList_SelectedChanged" Focusable="False">
                 <ComboBoxItem IsSelected="True">Arial</ComboBoxItem>
                 <ComboBoxItem>Calibri</ComboBoxItem>
                 <ComboBoxItem>Times New Roman</ComboBoxItem>
             </ComboBox>
-            <ComboBox Name="sizeList" Width="50" Height="30">
-                <ComboBoxItem IsSelected="True" HorizontalAlignment="Center">12</ComboBoxItem>
-                <ComboBoxItem>16</ComboBoxItem>
-                <ComboBoxItem>20</ComboBoxItem>
+            <ComboBox x:Name="sizeList" Width="50" Height="30" SelectionChanged="SizeList_SelectionChanged" Focusable="False">
+                <ComboBoxItem IsSelected="True">20</ComboBoxItem>
+                <ComboBoxItem>30</ComboBoxItem>
+                <ComboBoxItem>40</ComboBoxItem>
             </ComboBox>
         </ToolBar>
 
-        <TextBox Grid.Row="2" FontSize="30" Text="sggggsrgsefe"/>
-        
+        <RichTextBox x:Name="textBox" Grid.Row="2" Style="{DynamicResource RichTextBox}" FontSize="20" FontFamily="Arial" AcceptsReturn="True" 
+                AllowDrop="True" PreviewDragEnter="File_Drag" PreviewDragOver="File_Drag" PreviewDrop="File_Drop"/>
     </Grid>
 </Window>

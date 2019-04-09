@@ -55,6 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Themes\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\LightTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,11 +107,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\bold.png" />
-    <Resource Include="Resources\folder_open.png" />
-    <Resource Include="Resources\italic.png" />
-    <Resource Include="Resources\save.png" />
-    <Resource Include="Resources\underline.png" />
+    <Resource Include="Resources\icons\bold.png" />
+    <Resource Include="Resources\icons\folder.png" />
+    <Resource Include="Resources\icons\underline.png" />
+    <Resource Include="Resources\icons\italic.png" />
+    <Resource Include="Resources\icons\lock.png" />
+    <Resource Include="Resources\icons\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
