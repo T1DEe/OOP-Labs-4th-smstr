@@ -13,5 +13,9 @@ namespace OOP_Lab04_5
     /// </summary>
     public partial class App : Application
     {
+        App()
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ru-RU");
+        }
     }
 }

@@ -21,8 +21,12 @@ namespace OOP_Lab04_5
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<RichTextBox> tabRTBList = new List<RichTextBox>();
+        private int iterator = 1;
+
         public MainWindow()
         {
+
             InitializeComponent();
             BindKeys();
 
@@ -149,6 +153,25 @@ namespace OOP_Lab04_5
             Application.Current.Resources.Clear();
             // добавляем загруженный словарь ресурсов
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+        }
+
+        private void AddTab_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if(iterator < 10)
+            {
+                iterator++;
+                tabContol.Items.Add(new TabItem()
+                {
+                    Header = "New Tab " + iterator
+                });
+                
+                RichTextBox richTextBox = new RichTextBox();
+                richTextBox.DataContext = "dasd";
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

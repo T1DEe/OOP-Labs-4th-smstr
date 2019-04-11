@@ -38,4 +38,17 @@
             <Setter Property="Foreground" Value="White"/>
         </Style.Setters>
     </Style>
+
+    <Style x:Name="AddTab_btn" TargetType="{x:Type Button}">
+        <Style.Setters>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="SlateGray"/>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="TabControl" TargetType="{x:Type TabControl}">
+        <Style.Setters>
+            <Setter Property="Background" Value="SlateGray"/>
+        </Style.Setters>
+    </Style>
 </ResourceDictionary>

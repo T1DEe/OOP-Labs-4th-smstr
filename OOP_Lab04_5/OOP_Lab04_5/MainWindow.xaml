@@ -6,39 +6,47 @@
         xmlns:local="clr-namespace:OOP_Lab04_5"
         mc:Ignorable="d"
         Title="TextEditor" Height="450" Width="800"
-        MinWidth="450" MinHeight="300">
+        MinWidth="450" MinHeight="300"
+    
+    xmlns:lang = "clr-namespace:OOP_Lab04_5.Properties">
 
     <Grid Grid.Column="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition x:Name="mainField" Height="*"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Style="{DynamicResource Menu}">
-            <MenuItem Header="File">
-                <MenuItem Tag="new" Header="New" Style="{DynamicResource MenuItem}" Click="MenuItem_Click"/>
-                <MenuItem Tag="open" Header="Open" Style="{DynamicResource MenuItem}" Click="MenuItem_Click"/>
-                <MenuItem Tag="save" Header="Save" Style="{DynamicResource MenuItem}" Click="MenuItem_Click"/>
+        <Menu Grid.Row="0" Style="{DynamicResource Menu}" Grid.ColumnSpan="2">
+            <MenuItem Header="{x:Static lang:Resources.File}">
+                <MenuItem Tag="new" Header="{x:Static lang:Resources.New}" Style="{DynamicResource MenuItem}" Click="MenuItem_Click"/>
+                <MenuItem Tag="open" Header="{x:Static lang:Resources.Open}" Style="{DynamicResource MenuItem}" Click="MenuItem_Click"/>
+                <MenuItem Tag="save" Header="{x:Static lang:Resources.Save}" Style="{DynamicResource MenuItem}" Click="MenuItem_Click"/>
+                <MenuItem Tag="save" Header="{x:Static lang:Resources.NewTab}" Style="{DynamicResource MenuItem}" Click="AddTab_btn_Click"/>
             </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Copy" Style="{DynamicResource MenuItem}"  Command="Copy"/>
-                <MenuItem Header="Paste" Style="{DynamicResource MenuItem}"  Command="Paste"/>
+            <MenuItem Header="{x:Static lang:Resources.Edit}">
+                <MenuItem Header="{x:Static lang:Resources.Copy}" Style="{DynamicResource MenuItem}"  Command="Copy"/>
+                <MenuItem Header="{x:Static lang:Resources.Paste}" Style="{DynamicResource MenuItem}"  Command="Paste"/>
             </MenuItem>
-            <MenuItem Header="Settings">
-                <MenuItem x:Name="themeList" Header="Theme"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
-                    <MenuItem Header="Light" Style="{DynamicResource MenuItem}"  Click="Theme_Click"/>
-                    <MenuItem Header="Dark" Style="{DynamicResource MenuItem}"  Click="Theme_Click"/>
+            <MenuItem Header="{x:Static lang:Resources.Settings}">
+                <MenuItem x:Name="themeList" Header="{x:Static lang:Resources.Theme}"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
+                    <MenuItem Header="{x:Static lang:Resources.Light}" Style="{DynamicResource MenuItem}"  Click="Theme_Click"/>
+                    <MenuItem Header="{x:Static lang:Resources.Dark}" Style="{DynamicResource MenuItem}"  Click="Theme_Click"/>
                 </MenuItem>
-                <MenuItem Header="Language"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
-                    <MenuItem Header="English" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
-                    <MenuItem Header="Russian" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
+                <MenuItem Header="{x:Static lang:Resources.Language}"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
+                    <MenuItem Header="{x:Static lang:Resources.English}" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
+                    <MenuItem Header="{x:Static lang:Resources.Russian}" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
                 </MenuItem>
             </MenuItem>
         </Menu>
 
-        <ToolBar Grid.Row="1" Style="{DynamicResource Toolbar}">
+        <ToolBar Grid.Row="1" Style="{DynamicResource Toolbar}" Grid.ColumnSpan="2">
             <Button Tag="open" Style="{StaticResource Menu_btn}" Click="MenuItem_Click">
                 <Image Source="Resources/icons/folder.png" Width="30" Height="30"/>
             </Button>
@@ -73,6 +81,14 @@
         </ToolBar>
 
         <RichTextBox x:Name="textBox" Grid.Row="2" Style="{DynamicResource RichTextBox}" FontSize="20" FontFamily="Arial" AcceptsReturn="True" 
-                AllowDrop="True" PreviewDragEnter="File_Drag" PreviewDragOver="File_Drag" PreviewDrop="File_Drop"/>
+                AllowDrop="True" PreviewDragEnter="File_Drag" PreviewDragOver="File_Drag" PreviewDrop="File_Drop" Grid.ColumnSpan="2"/>
+
+        <TabControl x:Name="tabContol" Grid.Row="3" Grid.ColumnSpan="2" TabStripPlacement="Bottom" Style="{DynamicResource TabControl}">
+            <TabItem Header="New Tab 1"/>
+        </TabControl>
+
+        <Button x:Name="AddTab_btn" Grid.Column="1" Grid.Row="4" Click="AddTab_btn_Click">
+            <Image Source="Resources/icons/plus.png"/>
+        </Button>
     </Grid>
 </Window>
