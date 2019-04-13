@@ -21,15 +21,16 @@ namespace OOP_Lab04_5
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<RichTextBox> tabRTBList = new List<RichTextBox>();
-        private int iterator = 1;
+        private Dictionary<int, RichTextBox> dictionary = new Dictionary<int, RichTextBox>();
+        private int tabIterator = 0;
 
         public MainWindow()
-        {
-
+        { 
             InitializeComponent();
             BindKeys();
 
+            textBox.IsEnabled = false;
+            lock_btn.IsEnabled = false;
         }
 
         private void BindKey(RoutedCommand command, Key key, ModifierKeys modifier, ExecutedRoutedEventHandler handler)
@@ -155,23 +156,69 @@ namespace OOP_Lab04_5
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
         }
 
-        private void AddTab_btn_Click(object sender, RoutedEventArgs e)
+        private void Language_Click(object sender, RoutedEventArgs e)
         {
-            if(iterator < 10)
+            MenuItem choose = (MenuItem)sender;
+
+            if (choose.Header.ToString() == "English" || choose.Header.ToString() == "Английский")
             {
-                iterator++;
-                tabContol.Items.Add(new TabItem()
+                using (StreamWriter sw = new StreamWriter("../../Properties/LangConfig.txt", false, System.Text.Encoding.Default))
                 {
-                    Header = "New Tab " + iterator
-                });
-                
-                RichTextBox richTextBox = new RichTextBox();
-                richTextBox.DataContext = "dasd";
+                    sw.WriteLine("en");
+                }
             }
             else
             {
-                return;
+                using (StreamWriter sw = new StreamWriter("../../Properties/LangConfig.txt", false, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine("ru-RU");
+                }
             }
+            MessageBox.Show("Перезапустите программу/Reload the programm");
+        }
+
+        private void AddTab_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if(tabIterator < 10)
+            {
+                tabIterator++;
+
+                TabItem newItem = new TabItem();
+                newItem.Header = "New Tab" + tabIterator;
+
+                tabControl.Items.Add(newItem);
+
+                dictionary.Add(tabIterator-1, new RichTextBox());
+                MessageBox.Show("added");
+            }
+            else
+                return;
+        }
+
+        //private void tabItem_Click(object sender, MouseButtonEventArgs e)
+        //{
+        //    TabItem tab = (TabItem)sender;
+        //    textBox.IsEnabled = true;
+        //    lock_btn.IsEnabled = true;
+        //}
+
+        private void TabContol_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabControl tabCtrl = (TabControl)sender;
+            textBox.IsEnabled = true;
+            lock_btn.IsEnabled = true;
+
+            textBox = dictionary[tabCtrl.SelectedIndex];
+            MessageBox.Show(tabControl.SelectedIndex.ToString());
+
+            e.Handled = true;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            dictionary[tabControl.SelectedIndex] = textBox;
+            MessageBox.Show("text");
+            e.Handled = true;
         }
     }
 }

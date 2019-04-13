@@ -35,13 +35,13 @@
                 <MenuItem Header="{x:Static lang:Resources.Paste}" Style="{DynamicResource MenuItem}"  Command="Paste"/>
             </MenuItem>
             <MenuItem Header="{x:Static lang:Resources.Settings}">
-                <MenuItem x:Name="themeList" Header="{x:Static lang:Resources.Theme}"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
+                <MenuItem x:Name="themeList" Header="{x:Static lang:Resources.Theme}"  Style="{DynamicResource MenuItem}">
                     <MenuItem Header="{x:Static lang:Resources.Light}" Style="{DynamicResource MenuItem}"  Click="Theme_Click"/>
                     <MenuItem Header="{x:Static lang:Resources.Dark}" Style="{DynamicResource MenuItem}"  Click="Theme_Click"/>
                 </MenuItem>
-                <MenuItem Header="{x:Static lang:Resources.Language}"  Style="{DynamicResource MenuItem}"  Click="btnBold_Click">
-                    <MenuItem Header="{x:Static lang:Resources.English}" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
-                    <MenuItem Header="{x:Static lang:Resources.Russian}" Style="{DynamicResource MenuItem}"  Click="btnBold_Click"/>
+                <MenuItem Header="{x:Static lang:Resources.Language}"  Style="{DynamicResource MenuItem}">
+                    <MenuItem Header="{x:Static lang:Resources.English}" Style="{DynamicResource MenuItem}"  Click="Language_Click"/>
+                    <MenuItem Header="{x:Static lang:Resources.Russian}" Style="{DynamicResource MenuItem}"  Click="Language_Click"/>
                 </MenuItem>
             </MenuItem>
         </Menu>
@@ -64,7 +64,7 @@
                 <Image Source="Resources/icons/underline.png" Width="30" Height="30"/>
             </Button>
             <Separator Width="2" Background="DarkGray"/>
-            <Button Tag="lock" Style="{StaticResource Menu_btn}" Click="btnTextBoxLock_Click">
+            <Button Tag="lock" x:Name="lock_btn" Style="{StaticResource Menu_btn}" Click="btnTextBoxLock_Click">
                 <Image Source="Resources/icons/lock.png" Width="30" Height="30"/>
             </Button>
             <Separator Width="2" Background="DarkGray"/>
@@ -81,10 +81,11 @@
         </ToolBar>
 
         <RichTextBox x:Name="textBox" Grid.Row="2" Style="{DynamicResource RichTextBox}" FontSize="20" FontFamily="Arial" AcceptsReturn="True" 
-                AllowDrop="True" PreviewDragEnter="File_Drag" PreviewDragOver="File_Drag" PreviewDrop="File_Drop" Grid.ColumnSpan="2"/>
+                AllowDrop="True" PreviewDragEnter="File_Drag" PreviewDragOver="File_Drag" PreviewDrop="File_Drop" Grid.ColumnSpan="2"
+                TextChanged="TextBox_TextChanged"/>
 
-        <TabControl x:Name="tabContol" Grid.Row="3" Grid.ColumnSpan="2" TabStripPlacement="Bottom" Style="{DynamicResource TabControl}">
-            <TabItem Header="New Tab 1"/>
+        <TabControl x:Name="tabControl" Grid.Row="3" Grid.ColumnSpan="2" TabStripPlacement="Bottom" Style="{DynamicResource TabControl}" SelectionChanged="TabContol_SelectionChanged">
+            
         </TabControl>
 
         <Button x:Name="AddTab_btn" Grid.Column="1" Grid.Row="4" Click="AddTab_btn_Click">
